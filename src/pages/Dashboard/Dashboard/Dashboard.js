@@ -23,7 +23,7 @@ const Dashboard = () => {
                     <h3 className="text-center text-xl py-5">{users?.displayName} Panel</h3>
                     <Link className="w-full  flex  items-center space-x-20 text-xl  px-10" to="/dashboard/myOrder"><FaBeer className="mx-2" /> Bookings</Link> <br />
                     <Link className="w-12/12 flex  items-center space-x-20  text-xl px-10" to="/dashboard/review"> <FaBeer className="mx-2" /> Review</Link> <br />
-                    <Link className="w-12/12 flex  items-center space-x-20  text-xl px-10" to=""> <FaBeer className="mx-2" /> Pay</Link> <br />
+                    <Link className="w-12/12 flex  items-center space-x-20  text-xl px-10" to="/dashboard/payment/:id"> <FaBeer className="mx-2" /> Pay</Link> <br />
                     <Link className="w-12/12 flex  items-center space-x-20  text-xl px-10" to=""> <FaBeer className="mx-2" /> Profile</Link> <br />
                     <Link className="w-12/12 flex  items-center space-x-20  text-xl px-10" to=""> <FaBeer className="mx-2" /> Settings</Link> <br />
                     <Link className="w-12/12 flex  items-center space-x-20  text-xl px-10" to=""> <FaBeer className="mx-2" /> Logout</Link>

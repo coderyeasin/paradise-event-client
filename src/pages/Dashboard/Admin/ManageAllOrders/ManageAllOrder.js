@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../../../Hooks/useAuth';
-import { useForm } from "react-hook-form";
+// import { useForm } from "react-hook-form";
 
 const ManageAllOrder = () => {
 
     const {users} = useAuth()
     const [order, setOrders] = useState([])
+    const [status, setStatus] = useState("")
     // const [orders, setOrders] = useState([])
 
     useEffect(() => {
@@ -16,18 +17,27 @@ const ManageAllOrder = () => {
         .then(data => setOrders(data))
     }, [users?.email])
 
-    const { register, handleSubmit, reset } = useForm();
-    const onSubmit = data => {
-        console.log(data)
-        // axios.post('http://localhost:5000/events', data)
-        //     .then(res => {
-        //         if (res.data.insertedId) {
-        //             alert('added successfully');
-        //             reset()
-        //         }
-        //     console.log(res);
-        // })
-    };
+    // const { register, handleSubmit } = useForm();
+    // const onSubmit = data => {
+    //     setStatus(data)
+    // };
+     
+    const handleStatus = e => {
+        setStatus(e.target.value)
+    }
+
+    console.log(status);
+
+    const handleUpdate = id => {
+    
+        fetch(`http://localhost:5000/updateStatus/${id}`, {
+            method: 'PUT',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({status})
+        })
+        console.log(id);
+}
+
     return (
         <div>
             <h3 className="text-xl my-3 font-bold">Orders : {order.length} </h3>
@@ -54,29 +64,17 @@ const ManageAllOrder = () => {
                             <td className="border-r-2 border-pink-900">{event.title}</td>
                             <td className="border-r-2 border-pink-900">{event.email}</td>
                             <td className="border-r-2 border-pink-900">{event.phone}</td>
-                            <td className="border-r-2 border-pink-900" >{event.description}</td>
-                            <td className="border-r-2 border-pink-900" >{event.status}</td>
-                            <td  >                          
+                            <td className="border-r-2 border-pink-900" >{event.description.slice(0,20)}...</td>
+                            <td className=""  >                          
                             
-                                <form onSubmit={handleSubmit(onSubmit)}>
-
-                                <select style={{color:'purple'}} placeholder="Event Type"
-                            className="w-3/4 bg-transparent outline-none border-b-2 py-2 px-4  placeholder-purple-500 focus:bg-pink-600"
-                            {...register("status")}>
                             
-                                        <option className="text-purple-500" value={event.status}>{event.status}</option>
-                            <option value="full event">Full Event</option>
-                            <option value="mega event">Mega Event</option>
-                        </select>
-                                    
-                                    <input placeholder=""
-                            className="w-2/4 cursor-pointer text-pink-800 transform duration-500 hover:scale-95"
-                            type="submit" value="update" />
-                        
-                            </form>
-                            
+                                <input onChange={handleStatus} defaultValue={event.status}
+                                    className="text-pink-800 w-2/4" type="text" />
+                               
+                                                        
                             </td>
                             <td >
+                            <button onClick={() => handleUpdate(event._id)} className="text-gray-500 bg-red-200">Update</button>
                             <button className="text-yellow-50">X</button>
                             </td>
                             </tr>                      

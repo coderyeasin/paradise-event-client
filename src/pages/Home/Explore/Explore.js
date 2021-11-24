@@ -66,6 +66,10 @@ const onSubmit = data => {
                     className="w-3/4 bg-transparent outline-none border-b-2 py-2 px-4  placeholder-purple-500 focus:bg-pink-600"
                     {...register("email" )} />
                 
+                <input defaultValue={uniqueBook?.price} 
+                    className="w-3/4 bg-transparent outline-none border-b-2 py-2 px-4  placeholder-purple-500 focus:bg-pink-600"
+                    {...register("price" )} />
+                
                     <input placeholder="Phone"
                     type="tel"
                     className="w-3/4 bg-transparent outline-none border-b-2 py-2 px-4  placeholder-purple-500 focus:bg-pink-600"
@@ -76,7 +80,7 @@ const onSubmit = data => {
                     className="w-3/4 bg-transparent outline-none border-b-2 py-2 px-4  placeholder-purple-500 focus:bg-pink-600"
                     {...register("date", { required: true, maxLength: 120 })} />
                 
-                <textarea placeholder="Type your events Desp"
+                <textarea placeholder="Type your events purpose"
                     className="w-3/4 bg-transparent outline-none border-b-2 py-2 px-4  placeholder-purple-500 focus:bg-pink-600"
                     {...register("description", { required: true, maxLength: 120 })} />
                 

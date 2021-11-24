@@ -19,6 +19,7 @@ import MakeAdmin from './pages/Dashboard/Admin/MakeAdmin/MakeAdmin';
 import AllUsers from './pages/Dashboard/Admin/AllUsers/AllUsers';
 import AllEvents from './pages/Dashboard/Admin/AllEvents/AllEvents';
 import ManageAllOrder from './pages/Dashboard/Admin/ManageAllOrders/ManageAllOrder';
+import Payments from './pages/Dashboard/User/Payments/Payments';
 
 function App() {
   return (
@@ -74,6 +75,10 @@ function App() {
           
             <Route path="/dashboard/review" element={<PrivateRoute>
              <Review></Review>
+              </PrivateRoute>}> </Route>
+              
+            <Route path="/dashboard/payment/:id" element={<PrivateRoute>
+             <Payments></Payments>
             </PrivateRoute>}> </Route>
             
             </Route>

@@ -49,9 +49,11 @@ const MyOrder = () => {
                             <th>Date</th>
                             <th>Title</th>
                             <th>Email</th>
+                            <th>Price</th>
                             <th>Phone</th>
                             <th>Description</th>
                             <th>Status</th>
+                            <th>Payment</th>
                             <th>Action</th>
                             </tr>
                         </thead>
@@ -67,9 +69,16 @@ const MyOrder = () => {
                             <td className="border-r-2 border-pink-900">{event.date}</td>
                             <td className="border-r-2 border-pink-900">{event.title}</td>
                             <td className="border-r-2 border-pink-900">{event.email}</td>
+                            <td className="border-r-2 border-pink-900">{event.price}</td>
                             <td className="border-r-2 border-pink-900">{event.phone}</td>
                             <td className="border-r-2 border-pink-900" >{event.description}</td>
                             <td className="border-r-2 border-pink-900 text-gray-100" >{event.status}</td>
+                            <td >
+                                <Link to={`/dashboard/payment/${event._id}`}>
+                                    <button
+                                        className="bg-yellow-50 text-red-700 px-3">Pay</button>
+                                </Link>
+                            </td>
                             <td >
                             <button onClick={() => handleMyOrder(event._id)} className="text-yellow-50">X</button>
                             </td>
